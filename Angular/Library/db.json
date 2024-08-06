@@ -1,0 +1,30 @@
+{
+  "library": [
+    {
+      "id": 123,
+      "bookTitle": "Harrypotter",
+      "bookAuthor": "JK",
+      "bookISBN": 209
+    },
+    {
+      "id": 789,
+      "bookAuthor": "NPD",
+      "bookISBN": 563
+    },
+    {
+      "id": 123,
+      "bookAuthor": "priya",
+      "bookISBN": 456
+    },
+    {
+      "id": 123,
+      "bookAuthor": "priya",
+      "bookISBN": 456
+    },
+    {
+      "id": 123,
+      "bookAuthor": "priya",
+      "bookISBN": 456
+    }
+  ]
+}

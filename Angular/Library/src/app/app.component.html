@@ -1,0 +1,173 @@
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="app.component.css">
+</head>
+<body>
+   
+        <h1>Library Management System</h1>
+   
+   
+    <nav>
+        <ul>
+            <li><a href="#add-book">Add Book</a></li>
+            <li><a href="#view-books">View Books</a></li>
+        </ul>
+    </nav>
+    
+        <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <form #myForm="ngForm">
+
+                            <div class="form-group">
+                                <label for="id">
+                                   Book ID
+                                </label>
+                                <input type="number" 
+                                       class="form-control" 
+                                       name="id" 
+                                       #id="ngModel" ngModel
+                                       required
+                                       pattern="[0-9]+"
+                                       />
+                         
+                                      
+                            <div *ngIf="id.touched">
+                              <div *ngIf="id.errors?.['required']">
+                                <b style="color: red;">id is Required.</b>
+
+                              </div>
+                              <div *ngIf="id.errors?.['pattern']">
+                                <b color="red"><b>Invalid id .</b></b>
+                              </div>
+                            </div>
+                            </div>
+                               
+                            <div class="form-group">
+                                <label for=" Book title">
+                                     Book Title
+                                </label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       name="bookTitle" 
+                                       #bookTitle="ngModel" ngModel
+                                       required
+                                       pattern="[a-z,A-Z]+"
+                                        />
+                          
+
+                            <div *ngIf="bookTitle.touched">
+                              <div *ngIf="bookTitle.errors?.['required']">
+                                <b style="color: red;">title is Required.</b>
+
+                              </div>
+                              <div *ngIf="bookTitle.errors?.['pattern']">
+                                <b style= "color:red;"><b>Invalid title.</b></b>
+                              </div>
+                            </div>
+                           </div>
+
+
+                        
+    
+                                   <div class="form-group">
+                                        <label for="Book Author">
+                                             Book Author
+                                        </label>
+                                        <input type="text" 
+                                               class="form-control" 
+                                               name="bookAuthor" 
+                                               #bookAuthor="ngModel" ngModel
+                                               required
+                                               pattern="[a-Z]+"
+                                                />
+                                  
+    
+                                    <div *ngIf="bookAuthor.touched">
+                                      <div *ngIf="bookAuthor.errors?.['required']">
+                                        <b style="color: red;">author is Required.</b>
+    
+                                      </div>
+                                      <div *ngIf="bookAuthor.errors?.['pattern']">
+                                        <b style= "color:red;"><b>Invalid author.</b></b>
+                                      </div>
+                                    </div>
+                                   </div>
+    
+    
+                                    <div class="form-group">
+                                        <label for=" Book ISBN">
+                                             Book ISBN
+                                        </label>
+                                        <input type="number" 
+                                               class="form-control" 
+                                               name="bookISBN" 
+                                               #bookISBN="ngModel" ngModel
+                                               required
+                                               pattern="[0-9]+"
+                                               />
+                                 
+                                              
+                                    <div *ngIf="bookISBN.touched">
+                                      <div *ngIf="bookISBN.errors?.['required']">
+                                        <b style="color: red;">ISBN is Required.</b>
+    
+                                      </div>
+                                      <div *ngIf="bookISBN.errors?.['pattern']">
+                                        <b color="red"><b>Invalid ISBN .</b></b>
+                                      </div>
+                                    </div>
+                                    </div>
+                  
+                                
+    
+                                    
+    
+
+       
+            <h2 >Add a New Book</h2>
+            
+                <button class="btn btn-success" (click)="insertLibrary(myForm.value)">
+                    Insert 
+                </button>
+            &nbsp;&nbsp;
+                <button class="btn btn-primary" (click)="updateLibrary(myForm.value)" >
+                    Update 
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="deleteLibrary(myForm.value)">
+                    Delete 
+                </button>&nbsp;&nbsp;
+                <button class="btn btn-warning" (click)="findLibrary(myForm.value)">
+                    Find 
+                </button>
+                &nbsp;&nbsp;
+                <button class="btn btn-info" (click)="findAllLibrary()">
+                    Find All
+                </button>
+            </form>
+
+        
+       
+            <h2>Available Books</h2>
+            <h3>{{ result }}</h3>
+            <div style="width: 100%; " *ngIf="flag">
+                <table width="50%" align="center" class="table table-borderd" style="background-color: gray;">
+                 <tr><th style="background-color: grey;">Book ID</th><th style="background-color: grey;">Book Title</th><th style="background-color:grey;"> Book Author</th><th style="background-color:gray;">Book ISBN</th></tr> 
+                  <tr *ngFor="let library of libraryArr">
+                    <td> {{book.id}} </td><td> {{book.bookTitle}} </td><td>{{book.bookAuthor}}</td><td>{{book.bookISBN}}</td>
+                  </tr>
+               </table>
+               </div>
+            
+          
+
+            
+       
+    
+    
+
